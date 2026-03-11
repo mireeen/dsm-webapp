@@ -1,0 +1,36 @@
+.producto {
+    border: 2px solid #1e293b;
+    border-radius: 15px;
+    padding: 25px;
+    background-color: #1e293b;
+    color: #f1f5f9;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.producto:hover {
+    transform: scale(1.05);
+    border-color: #38bdf8;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.producto_descripcion h2 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: #38bdf8;
+}
+
+.producto_genero {
+    background-color: #334155;
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-bottom: 8px;
+}
+
+.producto_duracion {
+    color: #64748b;
+    font-size: 0.85rem;
+}

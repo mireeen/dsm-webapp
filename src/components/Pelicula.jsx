@@ -1,5 +1,6 @@
 import './pelicula.css'
 
+
 function Pelicula(props) {
     return (
         <div className='producto'>
