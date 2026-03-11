@@ -1,17 +1,14 @@
 import './pelicula.css'
-function Pelicula() {
-    const titulo = 'La novia';
-    const genero = 'Drama';
-    const duracion = 126;
+
+
+function Pelicula(props) {
     return (
         <div className='producto'>
             <div className='producto_descripcion'>
-                <h2>Título: {titulo}</h2>
-                <div className="producto_genero">Género: {genero}</div>
-                <div className='producto_duracion'>Duración: {duracion} min.</div>
+                <h2>Título: {props.pelicula.nombre}</h2>
+                <div className="producto_genero">Género: {props.pelicula.genero}</div>
             </div>
         </div>
-
     )
 }
 
