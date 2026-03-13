@@ -5,7 +5,7 @@ import { useContext } from "react"
 import AuthContext from "../components/store/AuthContext"
 
 
-function Login(props) {
+function Registro(props) {
     const auth = useContext(AuthContext)
 
 
@@ -19,7 +19,7 @@ function Login(props) {
             password: password,
             returnSecureToken: true
         }
-        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAm6kEzv-D6dPHwXPSibmrCZKmB00zPkRc', authData)
+        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAm6kEzv-D6dPHwXPSibmrCZKmB00zPkRc', authData)
             .then((response) => {
                 auth.setAuthData(true, response.data.idToken)
 
@@ -28,13 +28,6 @@ function Login(props) {
                 localStorage.setItem('idToken', response.data.idToken)
             })
             .catch((error) => console.log('Se ha producido algún error.'))
-    }
-
-
-
-    const logoutHandler = () => {
-        auth.setAuthData(false, null)
-        localStorage.clear()
     }
 
 
@@ -52,10 +45,7 @@ function Login(props) {
                             <Form.Control onChange={(event) => setPassword(event.target.value)} type='password' value={password} />
                         </Col>
                         <Col>
-                            <Button variant='primary' type='submit'>LOGIN</Button>
-                        </Col>
-                        <Col>
-                            <Button variant='warning' onClick={logoutHandler}>LOGOUT</Button>
+                            <Button variant='primary' type='submit'>Registrarme</Button>
                         </Col>
                     </Row>
                 </Container>
@@ -64,4 +54,4 @@ function Login(props) {
     )
 }
 
-export default Login
+export default Registro
