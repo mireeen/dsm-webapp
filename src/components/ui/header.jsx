@@ -9,6 +9,12 @@ function Header() {
         <Nav.Item>
           <Link className='nav-link' to="/">Catalogo</Link>
         </Nav.Item>
+         <Nav.Item>
+          <Link className='nav-link' to="/Login">Login</Link>
+        </Nav.Item>
+         <Nav.Item>
+          <Link className='nav-link' to="/Registro">Registro</Link>
+        </Nav.Item>
         <Nav.Item>
           <Link className='nav-link' to="/Contacto">Contacto</Link>
         </Nav.Item>
