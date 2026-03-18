@@ -7,7 +7,7 @@ import PeliculasFiltro from '../components/peliculafiltro';
 
 function Catalogo() {
 
-
+    
     const [peliculas, setPeliculas] = useState([]);
 
 

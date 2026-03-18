@@ -21,13 +21,16 @@ function Login(props) {
         }
         axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAm6kEzv-D6dPHwXPSibmrCZKmB00zPkRc', authData)
             .then((response) => {
-                auth.setAuthData(true, response.data.idToken)
+                
+                auth.setAuthData(true, response.data.idToken, response.data.localId);
 
-
-                localStorage.setItem('login', 'true')
-                localStorage.setItem('idToken', response.data.idToken)
+                localStorage.setItem('login', 'true');
+                localStorage.setItem('idToken', response.data.idToken);
+                localStorage.setItem('local', response.data.localId);
             })
-            .catch((error) => console.log('Se ha producido algún error.'))
+            .catch((error) => {
+                console.error('Error en login:', error);
+            })
     }
 
 
