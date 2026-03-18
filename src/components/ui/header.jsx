@@ -16,6 +16,9 @@ function Header() {
           <Link className='nav-link' to="/Registro">Registro</Link>
         </Nav.Item>
         <Nav.Item>
+          <Link className='nav-link'to="/Favoritos">Favoritos</Link>
+        </Nav.Item>
+        <Nav.Item>
           <Link className='nav-link' to="/Contacto">Contacto</Link>
         </Nav.Item>
         <Nav.Item>
