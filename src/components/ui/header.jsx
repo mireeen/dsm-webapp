@@ -36,9 +36,11 @@ function Header() {
               </Nav.Item>
             </>
           )}
+          {idToken && (
           <Nav.Item>
             <Link className='nav-link' to="/Favoritos">Favoritos</Link>
           </Nav.Item>
+          )}
           <Nav.Item>
             <Link className='nav-link' to="/Contacto">Contacto</Link>
           </Nav.Item>

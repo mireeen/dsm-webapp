@@ -3,10 +3,13 @@ import { Button } from 'react-bootstrap'
 import { Link } from 'react-router'
 
 import FavoritoButton from './Añadirfavoritos';
-
+import AuthContext from './store/AuthContext';
+import { useContext } from 'react';
 
 function Pelicula(props) {
     const nombre = props.pelicula.nombre;
+    const auth= useContext(AuthContext);
+    const idToken = auth.idToken;
 
     // Intenta cargar una imagen con el mismo nombre que la película.
     // Si no existe, usa un placeholder genérico.
@@ -29,7 +32,9 @@ function Pelicula(props) {
                     <Button variant='warning'>
                         <Link to={`/pelicula/${props.pelicula.id}`}>Ver ficha técnica</Link>
                     </Button>
+                    {idToken && (
                     <FavoritoButton peliculaId={props.pelicula.id} />
+                    )}
                 </div>
             </div>
         </div>)
