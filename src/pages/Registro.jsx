@@ -21,7 +21,8 @@ function Registro(props) {
         }
         axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAm6kEzv-D6dPHwXPSibmrCZKmB00zPkRc', authData)
             .then((response) => {
-                auth.setAuthData(true, response.data.idToken)
+                const nombre= email.split('@')[0];
+                auth.setAuthData(true, response.data.idToken, '', nombre)
 
 
                 localStorage.setItem('login', 'true')
