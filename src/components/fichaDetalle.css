@@ -1,0 +1,50 @@
+.ficha-detalle-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.ficha-detalle-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ficha-detalle-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.ficha-detalle-genero {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.rating-section {
+    margin-top: 20px;
+}
+
+.rating-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.rating-buttons .btn {
+    margin: 2px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.rating-buttons .btn:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}

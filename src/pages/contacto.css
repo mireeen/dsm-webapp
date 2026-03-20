@@ -1,0 +1,59 @@
+.contacto-page {
+  max-width: 720px;
+  margin: 30px auto;
+  padding: 30px;
+  background: #0f172a;
+  color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.contacto-page h1 {
+  color: #f8f9fa;
+  letter-spacing: 0.4px;
+}
+
+.contacto-page p {
+  color: #e9ecef;
+}
+
+.contacto-page .form-control {
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #212529;
+  border: 1px solid #fff;
+}
+
+.contacto-page .form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+  border-color: #0b5ed7;
+}
+
+.contacto-page .btn-info {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #212529;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.contacto-page .btn-info:hover {
+  background-color: #ffca2c;
+  border-color: #ffca2c;
+  color: #212529;
+}
+
+.contacto-page .contacto-extra {
+  margin-top: 26px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 16px;
+  color: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+  .contacto-page {
+    margin: 16px;
+    padding: 18px;
+  }
+}
