@@ -24,8 +24,8 @@ function Login(props) {
         }
         axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAm6kEzv-D6dPHwXPSibmrCZKmB00zPkRc', authData)
             .then((response) => {
-                const nombre= email.split('@')[0];
-                
+                const nombre = email.split('@')[0];
+
                 auth.setAuthData(true, response.data.idToken, response.data.localId, nombre);
                 localStorage.setItem('nombre', nombre);
                 localStorage.setItem('login', 'true');
@@ -36,8 +36,13 @@ function Login(props) {
                 navigate('/');
             })
             .catch((error) => {
-                console.error('Error en login:', error);
-                setErrorMessage('Usuario no existe o contraseña incorrecta');
+                let fbError = 'Error desconocido';
+                if (error.response && error.response.data && error.response.data.error) {
+                    fbError = error.response.data.error.message;
+                }
+                console.error('Error en Firebase Auth:', fbError);
+
+                setErrorMessage('Usuario inexistente o contraseña incorrecta');
                 setShowModal(true);
                 setEmail('');
                 setPassword('');
@@ -49,24 +54,31 @@ function Login(props) {
 
     return (
         <>
-            <Form onSubmit={submitHandler}>
-                <Container>
-                    <Row>
-                        <Col>
-                            <Form.Label>Email:</Form.Label>
-                            <Form.Control onChange={(event) => setEmail(event.target.value)} type='email' value={email} />
-                        </Col>
-                        <Col>
-                            <Form.Label>Password:</Form.Label>
-                            <Form.Control onChange={(event) => setPassword(event.target.value)} type='password' value={password} />
-                        </Col>
-                        <Col>
-                            <Button variant='primary' type='submit'>LOGIN</Button>
-                        </Col>
-                      
-                    </Row>
-                </Container>
-            </Form>
+            <Container className="d-flex justify-content-center mt-5 mb-5">
+                <Row className="w-100 justify-content-center">
+                    <Col md={8} lg={5} xl={4}>
+                        <div className="p-4 border rounded shadow-sm bg-light">
+                            <h3 className="text-center mb-4">Iniciar Sesión</h3>
+                            <Form onSubmit={submitHandler}>
+                                <Form.Group className="mb-3">
+                                    <Form.Label fw-bold>Email</Form.Label>
+                                    <Form.Control onChange={(event) => setEmail(event.target.value)} type='email' value={email} placeholder="Tu correo electrónico" required />
+                                </Form.Group>
+                                <Form.Group className="mb-4">
+                                    <Form.Label fw-bold>Contraseña</Form.Label>
+                                    <Form.Control onChange={(event) => setPassword(event.target.value)} type='password' value={password} placeholder="Tu contraseña" required />
+                                </Form.Group>
+                                <div className="d-grid gap-2 mb-3">
+                                    <Button variant='primary' type='submit' size="lg">Entrar</Button>
+                                </div>
+                            </Form>
+                            <div className="text-center mt-3">
+                                <span className="text-muted">¿No estás registrado? <a href="#" onClick={(e) => { e.preventDefault(); navigate('/Registro'); }} className="text-primary text-decoration-none fw-bold">Regístrate aquí</a></span>
+                            </div>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
             <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Error de Login</Modal.Title>

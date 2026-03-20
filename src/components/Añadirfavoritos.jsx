@@ -7,7 +7,7 @@ import AuthContext from "./store/AuthContext";
 function FavoritoButton({ peliculaId }) {
   const auth = useContext(AuthContext);
   const idtoken = auth.idToken;
-  const local= auth.localId;
+  const local = auth.localId;
 
   const [esFavorito, setEsFavorito] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -48,11 +48,35 @@ function FavoritoButton({ peliculaId }) {
 
   return (
     <>
-      <button onClick={toggleFavoritoHandler}>
-        {esFavorito ? "💔 Quitar de favoritos" : "❤️ Añadir a favoritos"}
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleFavoritoHandler();
+        }}
+        className="btn-favorito"
+        title={esFavorito ? "Quitar de favoritos" : "Añadir a favoritos"}
+        style={{
+          background: 'none',
+          border: 'none',
+          fontSize: '1.4rem',
+          cursor: 'pointer',
+          padding: '0',
+          lineHeight: 1,
+          transition: 'transform 0.2s',
+          outline: 'none',
+          color: esFavorito ? '#ef4444' : '#f8fafc'
+        }}
+        onMouseEnter={(e) => e.target.style.transform = 'scale(1.2)'}
+        onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+      >
+        {esFavorito ? "❤️" : "🤍"}
       </button>
 
-      <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+      <Modal show={showModal} onHide={(e) => {
+        if (e && e.stopPropagation) e.stopPropagation();
+        setShowModal(false);
+      }} centered onClick={(e) => e.stopPropagation()}>
         <Modal.Header closeButton>
           <Modal.Title>Iniciar sesión</Modal.Title>
         </Modal.Header>

@@ -16,18 +16,21 @@ function App() {
   return (
     <>
       <AuthProvider>
-        <Header />
-        <Routes>
-          <Route path='/' element={<Catalogo />}></Route>
-          <Route path='/Contacto' element={<Contacto />}></Route>
-          <Route path='/Legal' element={<Legal />}></Route>
-          <Route path='/Login' element={<Login />}></Route>
-          <Route path='/Registro' element={<Registro />}></Route>
-          <Route path='/pelicula/:id' element={<FichaDetalle />}></Route>
-          <Route path='/favoritos' element={<Favoritos />}></Route>
-
-        </Routes>
-        <Footer />
+        <div className="d-flex flex-column min-vh-100">
+          <Header />
+          <main className="flex-grow-1">
+            <Routes>
+              <Route path='/' element={<Catalogo />}></Route>
+              <Route path='/Contacto' element={<Contacto />}></Route>
+              <Route path='/Legal' element={<Legal />}></Route>
+              <Route path='/Login' element={<Login />}></Route>
+              <Route path='/Registro' element={<Registro />}></Route>
+              <Route path='/pelicula/:id' element={<FichaDetalle />}></Route>
+              <Route path='/favoritos' element={<Favoritos />}></Route>
+            </Routes>
+          </main>
+          <Footer />
+        </div>
       </AuthProvider>
     </>
   )
