@@ -1,0 +1,27 @@
+.footer-container {
+  background-color: #1a1a1a;
+  color: #f1f1f1;
+  padding: 2rem 0;
+  margin-top: auto;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-text {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.footer-subtext {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #a0a0a0;
+}

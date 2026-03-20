@@ -1,6 +1,6 @@
 import './pelicula.css'
 import { Button } from 'react-bootstrap'
-import { Link } from 'react-router'
+import { useNavigate } from 'react-router'
 
 import FavoritoButton from './Añadirfavoritos';
 import AuthContext from './store/AuthContext';
@@ -8,8 +8,13 @@ import { useContext } from 'react';
 
 function Pelicula(props) {
     const nombre = props.pelicula.nombre;
-    const auth= useContext(AuthContext);
+    const auth = useContext(AuthContext);
     const idToken = auth.idToken;
+    const navigate = useNavigate();
+
+    const handleCardClick = () => {
+        navigate(`/pelicula/${props.pelicula.id}`);
+    }
 
     // Intenta cargar una imagen con el mismo nombre que la película.
     // Si no existe, usa un placeholder genérico.
@@ -21,23 +26,21 @@ function Pelicula(props) {
     }
 
     return (
-        <div className='producto'>
+        <div className='producto' onClick={handleCardClick} title="Ver detalles o añadir a favoritos">
             <div className="producto_media">
                 <img className="pelicula_img" src={imgSrc} alt={nombre} />
-                <h2 className="producto_titulo">{nombre}</h2>
             </div>
             <div className='producto_info'>
-                <div className="producto_genero">Género: {props.pelicula.genero}</div>
-                <div className="producto_acciones">
-                    <Button variant='warning'>
-                        <Link to={`/pelicula/${props.pelicula.id}`}>Ver ficha técnica</Link>
-                    </Button>
-                    {idToken && (
-                    <FavoritoButton peliculaId={props.pelicula.id} />
-                    )}
-                </div>
+                <h2 className="producto_titulo">{nombre}</h2>
+                <div className="producto_genero">{props.pelicula.genero}</div>
             </div>
-        </div>)
+            {idToken && (
+                <div className="producto_acciones">
+                    <FavoritoButton peliculaId={props.pelicula.id} />
+                </div>
+            )}
+        </div>
+    )
 }
 
 

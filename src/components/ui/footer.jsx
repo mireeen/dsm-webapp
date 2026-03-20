@@ -1,10 +1,13 @@
-
+import './footer.css';
 
 function Footer() {
   return (
-    <div className='footer'>
-      <p>Copyright © 2024 - Todos los derechos reservados</p>
-    </div>
+    <footer className="footer-container">
+      <div className="container footer-content">
+        <p className="footer-text">Copyright © 2024 - Todos los derechos reservados</p>
+        <span className="footer-subtext">Diseñado con propósitos multimedia</span>
+      </div>
+    </footer>
   )
 }
 
