@@ -8,14 +8,14 @@ import AuthContext from '../components/store/AuthContext';
 function Favoritos() {
     const { idToken, localId} = useContext(AuthContext);
     const [peliculasfavoritas, setPeliculasfavoritas] = useState([]);
-    console.log("Renderizando Favoritos con localId:", localId);
+    //console.log("Renderizando Favoritos con localId:", localId);
     useEffect(() => {
         if (!idToken) {
             setPeliculasfavoritas([]);
             return;
         }
 
-        axios.get(`https://dsm-catalogo-default-rtdb.europe-west1.firebasedatabase.app/favoritos/${localId}.json`)
+        axios.get(`https://dsm-catalogo-default-rtdb.europe-west1.firebasedatabase.app/usuarios/${localId}/favoritos.json`)
             .then(response => {
                 // 1️⃣ Mostrar los datos crudos que llegan de Firebase
                 console.log("Datos crudos de Firebase (favoritos):", response.data);
@@ -66,7 +66,7 @@ function Favoritos() {
             .catch(error => {
                 console.error('Error fetching favoritos:', error);
             });
-    }, [idToken]);
+    },[idToken]);
 
     let contenido;
 
