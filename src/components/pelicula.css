@@ -6,6 +6,55 @@
     color: #f1f5f9;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+    align-items: start;
+    min-height: 360px;
+    max-width: 480px;
+}
+
+@media (max-width: 640px) {
+    .producto {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+        min-height: auto;
+    }
+}
+
+.producto_media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.producto_titulo {
+    font-size: 1.1rem;
+    text-align: center;
+    margin: 0;
+}
+
+.producto_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.producto_acciones {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.pelicula_img {
+    width: 140px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid #334155;
 }
 
 .producto:hover {

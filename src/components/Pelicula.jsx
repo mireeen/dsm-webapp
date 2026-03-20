@@ -3,23 +3,39 @@ import { Button } from 'react-bootstrap'
 import { Link } from 'react-router'
 
 import FavoritoButton from './Añadirfavoritos';
-
+import AuthContext from './store/AuthContext';
+import { useContext } from 'react';
 
 function Pelicula(props) {
+    const nombre = props.pelicula.nombre;
+    const auth= useContext(AuthContext);
+    const idToken = auth.idToken;
 
+    // Intenta cargar una imagen con el mismo nombre que la película.
+    // Si no existe, usa un placeholder genérico.
+    let imgSrc;
+    try {
+        imgSrc = new URL(`../images/${nombre}.jpg`, import.meta.url).href;
+    } catch {
+        imgSrc = new URL(`../images/usuario.png`, import.meta.url).href;
+    }
 
     return (
         <div className='producto'>
-            <div className='producto_descripcion'>
-                <h2>Título: {props.pelicula.nombre}</h2>
+            <div className="producto_media">
+                <img className="pelicula_img" src={imgSrc} alt={nombre} />
+                <h2 className="producto_titulo">{nombre}</h2>
+            </div>
+            <div className='producto_info'>
                 <div className="producto_genero">Género: {props.pelicula.genero}</div>
-            </div>
-            <div>  <Button variant='warning' >
-                <Link to={`/pelicula/${props.pelicula.id}`}>Ver ficha técnica</Link>
-            </Button>
-            </div>
-            <div>
-                <FavoritoButton peliculaId={props.pelicula.id} />
+                <div className="producto_acciones">
+                    <Button variant='warning'>
+                        <Link to={`/pelicula/${props.pelicula.id}`}>Ver ficha técnica</Link>
+                    </Button>
+                    {idToken && (
+                    <FavoritoButton peliculaId={props.pelicula.id} />
+                    )}
+                </div>
             </div>
         </div>)
 }
