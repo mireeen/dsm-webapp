@@ -1,7 +1,4 @@
-
 import './App.css'
-import Pelicula from './components/Pelicula'
-import Catalogo from './components/Catalogo'
 import Catalogo from './pages/Catalogo'
 import Contacto from './pages/Contacto'
 import Header from './components/ui/header'
