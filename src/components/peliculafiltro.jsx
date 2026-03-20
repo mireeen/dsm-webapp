@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Col, Container, Form, Row } from "react-bootstrap"
+import './peliculaFiltro.css'
 
 
 function PeliculasFiltro(props) {
@@ -10,10 +11,10 @@ function PeliculasFiltro(props) {
     }
 
     return (
-        <Container>
+        <Container className="filtro_container">
             <Row>
                 <Col md={4}>
-                    <Form.Label>Selecciona el genero:</Form.Label>
+                    <Form.Label>Selecciona el género:</Form.Label>
                     <Form.Select onChange={genderHandler} value={props.genero}>
                         <option value=''>Ver todos</option>
                         <option value='Drama'>Drama</option>

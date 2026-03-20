@@ -1,5 +1,4 @@
 import './App.css'
-
 import Catalogo from './pages/Catalogo'
 import Contacto from './pages/Contacto'
 import Header from './components/ui/header'
@@ -11,26 +10,25 @@ import Registro from './pages/Registro'
 import { AuthProvider } from './components/store/AuthContext'
 import FichaDetalle from './components/fichadetalle'
 import Favoritos from './pages/Favoritos'
+import ErrorPage from './pages/ErrorPage'
 
 function App() {
   return (
     <>
       <AuthProvider>
-        <div className="d-flex flex-column min-vh-100">
-          <Header />
-          <main className="flex-grow-1">
-            <Routes>
-              <Route path='/' element={<Catalogo />}></Route>
-              <Route path='/Contacto' element={<Contacto />}></Route>
-              <Route path='/Legal' element={<Legal />}></Route>
-              <Route path='/Login' element={<Login />}></Route>
-              <Route path='/Registro' element={<Registro />}></Route>
-              <Route path='/pelicula/:id' element={<FichaDetalle />}></Route>
-              <Route path='/favoritos' element={<Favoritos />}></Route>
-            </Routes>
-          </main>
-          <Footer />
-        </div>
+        <Header />
+        <Routes>
+          <Route path='/' element={<Catalogo />}></Route>
+          <Route path='/Contacto' element={<Contacto />}></Route>
+          <Route path='/Legal' element={<Legal />}></Route>
+          <Route path='/Login' element={<Login />}></Route>
+          <Route path='/Registro' element={<Registro />}></Route>
+          <Route path='/pelicula/:id' element={<FichaDetalle />}></Route>
+          <Route path='/favoritos' element={<Favoritos />}></Route>
+          <Route path= '*' element={<ErrorPage />}></Route>
+
+        </Routes>
+        <Footer />
       </AuthProvider>
     </>
   )
