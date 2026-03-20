@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './fichaDetalle.css';
 import { useParams, useSearchParams } from 'react-router';
 import axios from 'axios';
+import Comentarios from './Comentarios';
 
 function FichaDetalle() {
 
@@ -27,6 +28,13 @@ function FichaDetalle() {
             });
     }, [])
 
+    let imgSrc;
+    try {
+        imgSrc = new URL(`../images/${pelicula.nombre}.jpg`, import.meta.url).href;
+    } catch {
+        imgSrc = new URL(`../images/usuario.png`, import.meta.url).href;
+    }
+
     const handleRating = (rating) => {
         console.log(`Puntuación: ${rating}`);
     };
@@ -38,6 +46,7 @@ function FichaDetalle() {
                     <div className="card-body">
                         <h2 className="card-title ficha-detalle-title">{pelicula.nombre}</h2>
                         <p className="card-text ficha-detalle-genero"><strong>Género:</strong> {pelicula.genero}</p>
+                        <img className="pelicula_img" src={imgSrc} alt={pelicula.nombre} />
                         <p className="card-text ficha-detalle-resumen">{pelicula.resumen}</p>
                         <div className="rating-section">
                             <label className="rating-label">Puntúa la película:</label>
@@ -54,6 +63,7 @@ function FichaDetalle() {
                                 ))}
                             </div>
                         </div>
+                        <div><Comentarios key={pelicula.id} pelicula={pelicula} /></div>
                     </div>
                 </div>
             </div>
