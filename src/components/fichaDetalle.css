@@ -1,20 +1,27 @@
 .ficha-detalle-container {
-    max-width: 600px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
 }
 
 .ficha-detalle-card {
     border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.pelicula_img_detalle {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 2/3;
 }
 
 .ficha-detalle-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .ficha-detalle-genero {
@@ -34,14 +41,16 @@
 }
 
 .rating-buttons .btn {
-    margin: 2px;
+    margin: 1px;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 24px;
+    height: 24px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    font-size: 0.70rem;
+    padding: 0;
 }
 
 .rating-buttons .btn:hover {

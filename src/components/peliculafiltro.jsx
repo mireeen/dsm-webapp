@@ -12,11 +12,16 @@ function PeliculasFiltro(props) {
 
     return (
         <Container className="filtro_container">
-            <Row>
-                <Col md={4}>
-                    <Form.Label>Selecciona el género:</Form.Label>
-                    <Form.Select onChange={genderHandler} value={props.genero}>
-                        <option value=''>Ver todos</option>
+            <Row className="justify-content-center mb-4">
+                <Col md={6} lg={4} className="text-center">
+                    <Form.Label className="fw-bold text-light mb-2 text-uppercase" style={{ letterSpacing: '1px' }}>Selecciona el género</Form.Label>
+                    <Form.Select
+                        onChange={genderHandler}
+                        value={props.genero}
+                        className="shadow-sm border-0 py-2"
+                        style={{ backgroundColor: '#1e293b', color: '#f1f5f9', cursor: 'pointer' }}
+                    >
+                        <option value=''>★ Todos los géneros</option>
                         <option value='Drama'>Drama</option>
                         <option value='Comedia'>Comedia</option>
                         <option value='Acción'>Acción</option>

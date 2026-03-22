@@ -56,23 +56,31 @@ function Catalogo() {
     })
 
 
-    let contenido = <Alert>NO HAY PELICULAS DE {genero}</Alert>
+    let contenido;
     if (peliculasFiltradas.length > 0) {
-        contenido = peliculasFiltradas.map((elemento) => {
-            return <Pelicula key={elemento.id} pelicula={elemento} />
-        })
+        contenido = (
+            <div className="peliculas_grid">
+                {peliculasFiltradas.map((elemento) => (
+                    <Pelicula key={elemento.id} pelicula={elemento} />
+                ))}
+            </div>
+        );
+    } else {
+        contenido = (
+            <div className="text-center mt-5 text-light opacity-75">
+                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>😕</div>
+                <h5 className="fw-bold">No hay películas del género "{genero}"</h5>
+                <p>Intenta buscar con otro filtro.</p>
+            </div>
+        );
     }
 
     return (
-        <>
-            <section className="catalogo_container">
-                <h1 className="catalogo_titulo">Catálogo de Películas</h1>
-                <PeliculasFiltro setGenero={setGenero} genero={genero} />
-                <div className="peliculas_grid">
-                    {contenido}
-                </div>
-            </section>
-        </>
+        <section className="catalogo_container">
+            <h1 className="catalogo_titulo">Catálogo de Películas</h1>
+            <PeliculasFiltro setGenero={setGenero} genero={genero} />
+            {contenido}
+        </section>
     )
 }
 

@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import './fichaDetalle.css';
 import { useParams, useSearchParams } from 'react-router';
 import axios from 'axios';
+import { Container, Row, Col } from 'react-bootstrap';
 import Comentarios from './Comentarios';
+import Puntuacion from './Puntuacion';
 
 function FichaDetalle() {
 
@@ -41,32 +43,33 @@ function FichaDetalle() {
 
     return (
         <>
-            <div className="ficha-detalle-container">
-                <div className="card ficha-detalle-card">
-                    <div className="card-body">
-                        <h2 className="card-title ficha-detalle-title">{pelicula.nombre}</h2>
-                        <p className="card-text ficha-detalle-genero"><strong>Género:</strong> {pelicula.genero}</p>
-                        <img className="pelicula_img" src={imgSrc} alt={pelicula.nombre} />
-                        <p className="card-text ficha-detalle-resumen">{pelicula.resumen}</p>
-                        <div className="rating-section">
-                            <label className="rating-label">Puntúa la película:</label>
-                            <div className="btn-group rating-buttons" role="group">
-                                {Array.from({ length: 10 }, (_, i) => i + 1).map((num) => (
-                                    <button
-                                        key={num}
-                                        type="button"
-                                        className="btn btn-outline-primary"
-                                        onClick={() => handleRating(num)}
-                                    >
-                                        {num}
-                                    </button>
-                                ))}
+            <Container className="ficha-detalle-container mt-4 mb-5">
+                <div className="card ficha-detalle-card p-4 text-light" style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                    <Row>
+                        <Col md={5} lg={4} className="text-center mb-4 mb-md-0 d-flex flex-column align-items-center">
+                            <img className="pelicula_img_detalle shadow rounded mb-3" src={imgSrc} alt={pelicula.nombre} />
+
+                            <div className="w-100 p-3 rounded mt-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                                <label className="rating-label d-block text-center fw-bold mb-2 text-warning">Puntúa la película:</label>
+                                {pelicula.id && <Puntuacion peliculaId={pelicula.id} soloLectura={false} />}
                             </div>
-                        </div>
-                        <div><Comentarios key={pelicula.id} pelicula={pelicula} /></div>
-                    </div>
+                        </Col>
+                        <Col md={7} lg={8} className="d-flex flex-column">
+                            <h2 className="card-title ficha-detalle-title mb-1">{pelicula.nombre}</h2>
+                            <p className="card-text text-muted mb-4 opacity-75"><strong>Género:</strong> {pelicula.genero}</p>
+
+                            <h5 className="fw-bold border-bottom pb-2">Sinopsis</h5>
+                            <p className="card-text ficha-detalle-resumen mb-4" style={{ textAlign: "justify", lineHeight: "1.6" }}>
+                                {pelicula.resumen}
+                            </p>
+
+
+                        </Col>
+                    </Row>
+                    <hr className="my-4 text-muted" />
+                    <div className="mt-2"><Comentarios key={pelicula.id} pelicula={pelicula} /></div>
                 </div>
-            </div>
+            </Container>
         </>
     );
 }

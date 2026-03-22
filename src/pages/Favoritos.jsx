@@ -6,7 +6,7 @@ import { Alert } from "react-bootstrap";
 import AuthContext from '../components/store/AuthContext';
 
 function Favoritos() {
-    const { idToken, localId} = useContext(AuthContext);
+    const { idToken, localId } = useContext(AuthContext);
     const [peliculasfavoritas, setPeliculasfavoritas] = useState([]);
     //console.log("Renderizando Favoritos con localId:", localId);
     useEffect(() => {
@@ -66,29 +66,42 @@ function Favoritos() {
             .catch(error => {
                 console.error('Error fetching favoritos:', error);
             });
-    },[idToken]);
+    }, [idToken]);
 
     let contenido;
 
     if (!idToken) {
-        contenido = <Alert>Debes iniciar sesión para ver tus películas favoritas.</Alert>;
+        contenido = (
+            <div className="text-center mt-5">
+                <Alert variant="warning" className="d-inline-block shadow-sm px-5 py-4 rounded-4">
+                    <h4 className="mb-3">🔒 Acceso restringido</h4>
+                    <p className="mb-0">Debes iniciar sesión para ver tus películas favoritas.</p>
+                </Alert>
+            </div>
+        );
     } else if (peliculasfavoritas.length === 0) {
-        contenido = <Alert>NO HAY PELÍCULAS EN FAVORITOS</Alert>;
+        contenido = (
+            <div className="text-center mt-5 text-light opacity-75">
+                <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🤍</div>
+                <h4 className="fw-bold">Aún no tienes favoritos</h4>
+                <p>Explora el catálogo y añade las películas que más te gusten.</p>
+            </div>
+        );
     } else {
-        contenido = peliculasfavoritas.map((elemento) => {
-            return <Pelicula key={elemento.id} pelicula={elemento} />;
-        });
+        contenido = (
+            <div className="peliculas_grid">
+                {peliculasfavoritas.map((elemento) => (
+                    <Pelicula key={elemento.id} pelicula={elemento} />
+                ))}
+            </div>
+        );
     }
 
     return (
-        <>
-            <section className="catalogo_container">
-                <h1 className="catalogo_titulo">Catálogo de Películas</h1>
-                <div className="peliculas_grid">
-                    {contenido}
-                </div>
-            </section>
-        </>
+        <section className="catalogo_container">
+            <h1 className="catalogo_titulo">Tus Favoritos</h1>
+            {contenido}
+        </section>
     );
 }
 

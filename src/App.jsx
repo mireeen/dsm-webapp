@@ -14,23 +14,25 @@ import ErrorPage from './pages/ErrorPage'
 
 function App() {
   return (
-    <>
+    <div className="d-flex flex-column min-vh-100 text-white" style={{ backgroundColor: '#020617' }}>
       <AuthProvider>
         <Header />
-        <Routes>
-          <Route path='/' element={<Catalogo />}></Route>
-          <Route path='/Contacto' element={<Contacto />}></Route>
-          <Route path='/Legal' element={<Legal />}></Route>
-          <Route path='/Login' element={<Login />}></Route>
-          <Route path='/Registro' element={<Registro />}></Route>
-          <Route path='/pelicula/:id' element={<FichaDetalle />}></Route>
-          <Route path='/favoritos' element={<Favoritos />}></Route>
-          <Route path= '*' element={<ErrorPage />}></Route>
+        <main className="flex-grow-1 d-flex flex-column">
+          <Routes>
+            <Route path='/' element={<Catalogo />}></Route>
+            <Route path='/Contacto' element={<Contacto />}></Route>
+            <Route path='/Legal' element={<Legal />}></Route>
+            <Route path='/Login' element={<Login />}></Route>
+            <Route path='/Registro' element={<Registro />}></Route>
+            <Route path='/pelicula/:id' element={<FichaDetalle />}></Route>
+            <Route path='/favoritos' element={<Favoritos />}></Route>
+            <Route path='*' element={<ErrorPage />}></Route>
 
-        </Routes>
+          </Routes>
+        </main>
         <Footer />
       </AuthProvider>
-    </>
+    </div>
   )
 }
 

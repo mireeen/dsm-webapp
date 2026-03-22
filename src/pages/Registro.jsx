@@ -52,7 +52,7 @@ function Registro(props) {
             <Container className="d-flex justify-content-center mt-5 mb-5">
                 <Row className="w-100 justify-content-center">
                     <Col md={8} lg={5} xl={4}>
-                        <div className="p-4 border rounded shadow-sm bg-light">
+                        <div className="p-4 rounded shadow-lg text-light" style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
                             <h3 className="text-center mb-4">Regístrate</h3>
                             <Form onSubmit={submitHandler}>
                                 <Form.Group className="mb-3">
