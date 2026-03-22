@@ -1,0 +1,65 @@
+/* Estilos para la página Legal - Tema oscuro similar al catálogo */
+
+.legal-page {
+  min-height: 100vh;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.legal-page .container {
+  background-color: #0f172a;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  padding: 30px;
+}
+
+.legal-page h1 {
+  color: #ffc107;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.legal-page h2 {
+  color: #0dcaf0;
+  border-bottom: 2px solid #0dcaf0;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.legal-page h5 {
+  color: #ffc107;
+  margin-top: 20px;
+}
+
+.legal-page p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.legal-page ul {
+  padding-left: 20px;
+}
+
+.legal-page li {
+  margin-bottom: 8px;
+}
+
+.legal-page strong {
+  color: #ffc107;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .legal-page .container {
+    margin: 10px;
+    padding: 20px;
+  }
+
+  .legal-page h1 {
+    font-size: 2rem;
+  }
+
+  .legal-page h2 {
+    font-size: 1.5rem;
+  }
+}
