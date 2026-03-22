@@ -59,8 +59,8 @@ function Legal() {
                                 Para consultas legales o reportes de infracciones, puedes contactarnos en:
                             </p>
                             <ul className="text-light">
-                                <li><strong>Email:</strong> legal@tuwebapp.com</li>
-                                <li><strong>Dirección:</strong> Campus Universitario, Ciudad</li>
+                                <li><strong>Email:</strong> legal@peliculeras.com</li>
+                                <li><strong>Dirección:</strong> Campus Arrosadia, Pamplona</li>
                                 <li><strong>Teléfono:</strong> +34 123 456 789</li>
                             </ul>
                         </section>

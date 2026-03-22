@@ -16,7 +16,7 @@ function Contacto() {
 
                         <div className="mb-3">
                             <label className="form-label">Correo Electrónico</label>
-                            <input type="email" className="form-control" placeholder="nombre@ejemplo.com" />
+                            <input type="email" className="form-control" placeholder="nombre@gmail.com" />
                         </div>
 
                         <div className="mb-3">
@@ -30,7 +30,7 @@ function Contacto() {
             </div>
             <div className="mt-5 text-center">
                 <h5>Otras formas de contacto:</h5>
-                <p>📧 soporte@tuwebapp.com | 📍 Campus Universitario</p>
+                <p>📧 soporte@peliculeras.com | 📍 Campus Arrosadia, UPNA</p>
             </div>
         </div>
     );
