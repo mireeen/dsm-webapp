@@ -5,12 +5,12 @@ function Legal() {
     return (
         <div className="legal-page">
             <div className="container mt-5 p-4">
-                <h1 className="text-center mb-4 text-info">Información Legal</h1>
+                <h1 className="text-center mb-4">Información Legal</h1>
 
                 <div className="row">
                     <div className="col-12">
                         <section className="mb-5">
-                            <h2 className="text-info mb-3">Términos y Condiciones</h2>
+                            <h2 className="mb-3">Términos y Condiciones</h2>
                             <p className="text-light">
                                 Bienvenido a nuestra plataforma de streaming de películas. Al acceder y utilizar nuestros servicios,
                                 aceptas cumplir con los siguientes términos y condiciones.
@@ -24,12 +24,12 @@ function Legal() {
                         </section>
 
                         <section className="mb-5">
-                            <h2 className="text-info mb-3">Política de Privacidad</h2>
+                            <h2 className="mb-3">Política de Privacidad</h2>
                             <p className="text-light">
                                 Nos comprometemos a proteger tu privacidad. Recopilamos información personal únicamente para
                                 proporcionar nuestros servicios y mejorar tu experiencia.
                             </p>
-                            <h5 className="text-warning">Información que recopilamos:</h5>
+                            <h5>Información que recopilamos:</h5>
                             <ul className="text-light">
                                 <li>Nombre y dirección de correo electrónico para registro.</li>
                                 <li>Datos de uso para analizar preferencias y mejorar el servicio.</li>
@@ -42,7 +42,7 @@ function Legal() {
                         </section>
 
                         <section className="mb-5">
-                            <h2 className="text-info mb-3">Derechos de Autor</h2>
+                            <h2 className="mb-3">Derechos de Autor</h2>
                             <p className="text-light">
                                 Todo el contenido disponible en nuestra plataforma está protegido por derechos de autor.
                                 Respetamos los derechos de propiedad intelectual y esperamos que nuestros usuarios hagan lo mismo.
@@ -54,7 +54,7 @@ function Legal() {
                         </section>
 
                         <section className="mb-5">
-                            <h2 className="text-info mb-3">Contacto Legal</h2>
+                            <h2 className="mb-3">Contacto Legal</h2>
                             <p className="text-light">
                                 Para consultas legales o reportes de infracciones, puedes contactarnos en:
                             </p>
@@ -66,7 +66,7 @@ function Legal() {
                         </section>
 
                         <section>
-                            <h2 className="text-info mb-3">Última actualización</h2>
+                            <h2 className="mb-3">Última actualización</h2>
                             <p className="text-light">Esta información legal fue actualizada por última vez el 20 de marzo de 2026.</p>
                         </section>
                     </div>

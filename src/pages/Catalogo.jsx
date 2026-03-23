@@ -106,8 +106,8 @@ function Catalogo() {
             <div className="text-center mb-4">
                 <button
                     onClick={handleRandomMovie}
-                    className="btn btn-warning fw-bold fs-5 px-4 py-2"
-                    style={{ borderRadius: '30px', boxShadow: '0 4px 15px rgba(255, 193, 7, 0.4)', transition: 'transform 0.2s', border: 'none', color: '#000' }}
+                    className="btn btn-primary-custom fw-bold fs-5 px-4 py-2"
+                    style={{ borderRadius: '30px', boxShadow: '0 4px 15px rgba(13, 110, 253, 0.35)', transition: 'transform 0.2s', border: 'none', color: '#fff' }}
                     onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
                     onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
                 >

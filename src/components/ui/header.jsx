@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router';
+import { Link, useNavigate, useLocation } from 'react-router';
 import './header.css'
 import { useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
@@ -10,6 +10,9 @@ function Header() {
   const idToken = auth.idToken;
   const nombre = auth.nombre;
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
 
   const logoutHandler = () => {
     auth.setAuthData(false, null);
@@ -26,11 +29,11 @@ function Header() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mx-auto">
-            <Link className="nav-link text-uppercase fw-semibold px-3" to="/">Catálogo</Link>
-            <Link className="nav-link text-uppercase fw-bold text-warning px-3" to="/Ranking">🏆 Top 10</Link>
-            {idToken && <Link className="nav-link text-uppercase fw-semibold px-3" to="/Favoritos">Favoritos</Link>}
-            <Link className="nav-link text-uppercase fw-semibold px-3" to="/Contacto">Contacto</Link>
-            <Link className="nav-link text-uppercase fw-semibold px-3" to="/Legal">Legal</Link>
+            <Link className={`nav-link text-uppercase fw-semibold px-3 ${isActive('/') ? 'active-nav' : ''}`} to="/">Catálogo</Link>
+            <Link className={`nav-link text-uppercase fw-bold text-warning px-3 ${isActive('/Ranking') ? 'active-nav' : ''}`} to="/Ranking">🏆 Top 10</Link>
+            {idToken && <Link className={`nav-link text-uppercase fw-semibold px-3 ${isActive('/Favoritos') ? 'active-nav' : ''}`} to="/Favoritos">Favoritos</Link>}
+            <Link className={`nav-link text-uppercase fw-semibold px-3 ${isActive('/Contacto') ? 'active-nav' : ''}`} to="/Contacto">Contacto</Link>
+            <Link className={`nav-link text-uppercase fw-semibold px-3 ${isActive('/Legal') ? 'active-nav' : ''}`} to="/Legal">Legal</Link>
           </Nav>
 
           <Nav className="align-items-center gap-3 mt-3 mt-lg-0 pb-3 pb-lg-0">
