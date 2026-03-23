@@ -2,8 +2,8 @@ import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router';
 import './header.css'
 import { useContext } from 'react';
-import AuthContext from '../store/AuthContext';
-import usuarioImg from '../../images/usuario.png';
+import AuthContext from '../../context/AuthContext';
+import usuarioImg from '../../assets/images/usuario.png';
 
 function Header() {
   const auth = useContext(AuthContext);
@@ -27,6 +27,7 @@ function Header() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mx-auto">
             <Link className="nav-link text-uppercase fw-semibold px-3" to="/">Catálogo</Link>
+            <Link className="nav-link text-uppercase fw-bold text-warning px-3" to="/Ranking">🏆 Top 10</Link>
             {idToken && <Link className="nav-link text-uppercase fw-semibold px-3" to="/Favoritos">Favoritos</Link>}
             <Link className="nav-link text-uppercase fw-semibold px-3" to="/Contacto">Contacto</Link>
             <Link className="nav-link text-uppercase fw-semibold px-3" to="/Legal">Legal</Link>

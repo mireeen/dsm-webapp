@@ -1,12 +1,13 @@
 import axios from 'axios';
-import Pelicula from '../components/Pelicula';
+import Pelicula from '../components/movie/Pelicula';
 import './catalogo.css';
 import { useState, useEffect } from "react"
 import { Alert } from "react-bootstrap"
-import PeliculasFiltro from '../components/peliculafiltro';
+import PeliculasFiltro from '../components/movie/peliculafiltro';
+import { useNavigate } from 'react-router';
 
 function Catalogo() {
-
+    const navigate = useNavigate();
 
     const [peliculas, setPeliculas] = useState([]);
 
@@ -27,10 +28,25 @@ function Catalogo() {
 
                     // 3️⃣ Evitar que valores nulos rompan el código
                     if (response.data[key] != null) {
+                        let media = 0;
+                        let count = 0;
+                        let puntuacionesObj = response.data[key].puntuaciones;
+                        if (puntuacionesObj) {
+                            for (let userKey in puntuacionesObj) {
+                                let val = puntuacionesObj[userKey]?.puntuacion;
+                                if (typeof val === 'number') {
+                                    media += val;
+                                    count++;
+                                }
+                            }
+                            if (count > 0) media = parseFloat((media / count).toFixed(1));
+                        }
+
                         arrayPeliculas.push({
                             id: key,
                             nombre: response.data[key].nombre || "Nombre no disponible",
                             genero: response.data[key].genero || "Género no disponible",
+                            media: media
                         });
                     } else {
                         console.warn(`Valor nulo encontrado en key: ${key}`);
@@ -48,14 +64,14 @@ function Catalogo() {
     }, []);
 
     const [genero, setGenero] = useState('');
+    const [busqueda, setBusqueda] = useState('');
+
     const peliculasFiltradas = peliculas.filter((pelicula) => {
-        if (genero !== '') {
-            return pelicula.genero.toLowerCase().includes(genero.toLowerCase())
-        }
-        return true
-    })
+        const coincideGenero = genero === '' || pelicula.genero.toLowerCase().includes(genero.toLowerCase());
+        const coincideBusqueda = busqueda === '' || pelicula.nombre.toLowerCase().includes(busqueda.toLowerCase());
 
-
+        return coincideGenero && coincideBusqueda;
+    });
     let contenido;
     if (peliculasFiltradas.length > 0) {
         contenido = (
@@ -67,18 +83,39 @@ function Catalogo() {
         );
     } else {
         contenido = (
-            <div className="text-center mt-5 text-light opacity-75">
+            <div className="text-center mt-5 opacity-75" style={{ color: 'var(--text-color)' }}>
                 <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>😕</div>
-                <h5 className="fw-bold">No hay películas del género "{genero}"</h5>
-                <p>Intenta buscar con otro filtro.</p>
+                <h5 className="fw-bold">No hay películas que coincidan con tu búsqueda.</h5>
+                <p>Intenta buscar con otro nombre o limpiar el filtro de género.</p>
             </div>
         );
     }
 
+    const handleRandomMovie = () => {
+        if (peliculas.length > 0) {
+            const randomIndex = Math.floor(Math.random() * peliculas.length);
+            const randomMovie = peliculas[randomIndex];
+            navigate(`/pelicula/${randomMovie.id}`);
+        }
+    };
+
     return (
         <section className="catalogo_container">
             <h1 className="catalogo_titulo">Catálogo de Películas</h1>
-            <PeliculasFiltro setGenero={setGenero} genero={genero} />
+
+            <div className="text-center mb-4">
+                <button
+                    onClick={handleRandomMovie}
+                    className="btn btn-warning fw-bold fs-5 px-4 py-2"
+                    style={{ borderRadius: '30px', boxShadow: '0 4px 15px rgba(255, 193, 7, 0.4)', transition: 'transform 0.2s', border: 'none', color: '#000' }}
+                    onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
+                    onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
+                >
+                    🎲 ¿No sabes qué ver? (Sorpréndeme)
+                </button>
+            </div>
+
+            <PeliculasFiltro setGenero={setGenero} genero={genero} busqueda={busqueda} setBusqueda={setBusqueda} />
             {contenido}
         </section>
     )

@@ -3,23 +3,25 @@ import { Col, Container, Form, Row } from "react-bootstrap"
 import './peliculaFiltro.css'
 
 
-function PeliculasFiltro(props) {
-
-
-    const genderHandler = (event) => {
-        props.setGenero(event.target.value)
-    }
+function PeliculasFiltro({ genero, setGenero, busqueda, setBusqueda }) {
 
     return (
         <Container className="filtro_container">
-            <Row className="justify-content-center mb-4">
-                <Col md={6} lg={4} className="text-center">
-                    <Form.Label className="fw-bold text-light mb-2 text-uppercase" style={{ letterSpacing: '1px' }}>Selecciona el género</Form.Label>
+            <Row className="justify-content-center mb-5 g-4">
+                <Col md={6} lg={5} className="premium-input-group">
+                    <label className="filtro-label">Buscar película</label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Ej: Inception, Matrix..."
+                        value={busqueda}
+                        onChange={(e) => setBusqueda(e.target.value)}
+                    />
+                </Col>
+                <Col md={6} lg={5} className="premium-input-group">
+                    <label className="filtro-label">Filtrar por género</label>
                     <Form.Select
-                        onChange={genderHandler}
-                        value={props.genero}
-                        className="shadow-sm border-0 py-2"
-                        style={{ backgroundColor: '#1e293b', color: '#f1f5f9', cursor: 'pointer' }}
+                        onChange={(e) => setGenero(e.target.value)}
+                        value={genero}
                     >
                         <option value=''>★ Todos los géneros</option>
                         <option value='Drama'>Drama</option>

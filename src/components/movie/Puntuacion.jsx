@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import AuthContext from "./store/AuthContext";
+import AuthContext from "../../context/AuthContext";
 import { Modal, Button } from "react-bootstrap";
 
 function Puntuacion({ peliculaId, soloLectura }) {

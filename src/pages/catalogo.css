@@ -1,8 +1,9 @@
 .catalogo_container {
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: #020617;
+    padding: 30px 2%;
+    /* Prácticamente sin márgenes laterales (ocupa toda la pantalla) */
+    max-width: 100%;
+    /* 100% real edge-to-edge */
+    margin: 0;
     min-height: 100vh;
 }
 
@@ -11,12 +12,14 @@
     color: #f8fafc;
     font-size: 2.5rem;
     margin-bottom: 40px;
-    /*background: linear-gradient(90deg, #38bdf8, #818cf8);*/
     font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .peliculas_grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Si filtras y queda 1 película, se pone justo en el medio */
     gap: 30px;
 }

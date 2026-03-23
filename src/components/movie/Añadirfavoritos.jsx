@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { Modal, Button } from "react-bootstrap";
-import AuthContext from "./store/AuthContext";
+import AuthContext from "../../context/AuthContext";
 
 function FavoritoButton({ peliculaId }) {
   const auth = useContext(AuthContext);

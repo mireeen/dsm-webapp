@@ -1,9 +1,9 @@
 import axios from 'axios';
-import Pelicula from '../components/Pelicula';
+import Pelicula from '../components/movie/Pelicula';
 import './catalogo.css';
 import { useState, useEffect, useContext } from "react";
 import { Alert } from "react-bootstrap";
-import AuthContext from '../components/store/AuthContext';
+import AuthContext from '../context/AuthContext';
 
 function Favoritos() {
     const { idToken, localId } = useContext(AuthContext);

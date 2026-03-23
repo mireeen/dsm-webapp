@@ -10,7 +10,10 @@
     overflow: hidden;
     position: relative;
     cursor: pointer;
-    height: 100%;
+    width: 260px;
+    /* Ancho fijo para flexbox */
+    flex: 0 0 260px;
+    /* Evita que crezcan o encojan rompiendo la imagen */
 }
 
 .producto_media {
@@ -84,4 +87,22 @@
     .producto {
         max-width: 100%;
     }
+}
+
+.badge-top {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: #1e293b;
+    font-weight: bold;
+    font-size: 0.85rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4), 0 0 10px rgba(251, 191, 36, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid #fde68a;
+    pointer-events: none;
 }

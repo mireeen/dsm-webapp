@@ -1,0 +1,25 @@
+graph TD
+    Root[main.jsx<br>Punto de entrada] --> App[App.jsx<br>Layout Principal]
+    
+    App --> AuthProvider[AuthProvider<br>Contexto Global de Sesión]
+    
+    AuthProvider --> Header[Header<br>Componente UI Global]
+    AuthProvider --> Router[Navegación / Rutas]
+    AuthProvider --> Footer[Footer<br>Componente UI Global]
+    
+    Router --> Catalogo[Catalogo<br>Ruta: /]
+    Router --> Contacto[Contacto<br>Ruta: /Contacto]
+    Router --> Legal[Legal<br>Ruta: /Legal]
+    Router --> Login[Login<br>Ruta: /Login]
+    Router --> Registro[Registro<br>Ruta: /Registro]
+    Router --> FichaDetalle[FichaDetalle<br>Ruta: /pelicula/:id]
+    Router --> Favoritos[Favoritos<br>Ruta: /favoritos]
+    Router --> ErrorPage[ErrorPage<br>Ruta: *]
+    
+    Catalogo --> PeliculasFiltro[PeliculasFiltro<br>Barra Búsqueda y Filtro]
+    Catalogo --> PeliculasGrid[Grid de Películas<br>mapeo]
+    PeliculasGrid -.-> Pelicula[Pelicula<br>Tarjeta Individual]
+    
+    FichaDetalle --> Añadirfavoritos[Añadirfavoritos]
+    FichaDetalle --> Comentarios[Comentarios]
+    FichaDetalle --> Puntuacion[Puntuacion]

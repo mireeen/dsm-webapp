@@ -32,9 +32,9 @@ function FichaDetalle() {
 
     let imgSrc;
     try {
-        imgSrc = new URL(`../images/${pelicula.nombre}.jpg`, import.meta.url).href;
+        imgSrc = new URL(`../../assets/images/${pelicula.nombre}.jpg`, import.meta.url).href;
     } catch {
-        imgSrc = new URL(`../images/usuario.png`, import.meta.url).href;
+        imgSrc = new URL(`../../assets/images/usuario.png`, import.meta.url).href;
     }
 
     const handleRating = (rating) => {

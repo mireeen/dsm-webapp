@@ -1,0 +1,52 @@
+# Arquitectura de Componentes (React)
+
+Este es el esquema jerárquico de cómo funciona React en este proyecto, organizado por niveles ("capas") y cómo fluye la información:
+
+## Árbol de Componentes Principal
+
+```mermaid
+graph TD
+    Root[main.jsx<br>Punto de entrada] --> App[App.jsx<br>Layout Principal]
+    
+    App --> AuthProvider[AuthProvider<br>Contexto Global de Sesión]
+    
+    AuthProvider --> Header[Header<br>Componente UI Global]
+    AuthProvider --> Router[Navegación / Rutas]
+    AuthProvider --> Footer[Footer<br>Componente UI Global]
+    
+    Router --> Catalogo[Catalogo<br>Ruta: /]
+    Router --> Contacto[Contacto<br>Ruta: /Contacto]
+    Router --> Legal[Legal<br>Ruta: /Legal]
+    Router --> Login[Login<br>Ruta: /Login]
+    Router --> Registro[Registro<br>Ruta: /Registro]
+    Router --> FichaDetalle[FichaDetalle<br>Ruta: /pelicula/:id]
+    Router --> Favoritos[Favoritos<br>Ruta: /favoritos]
+    Router --> ErrorPage[ErrorPage<br>Ruta: *]
+    
+    Catalogo --> PeliculasFiltro[PeliculasFiltro<br>Barra Búsqueda y Filtro]
+    Catalogo --> PeliculasGrid[Grid de Películas<br>mapeo]
+    PeliculasGrid -.-> Pelicula[Pelicula<br>Tarjeta Individual]
+    
+    FichaDetalle --> Añadirfavoritos[Añadirfavoritos]
+    FichaDetalle --> Comentarios[Comentarios]
+    FichaDetalle --> Puntuacion[Puntuacion]
+```
+
+## Nivelado (Cómo funciona React aquí)
+
+1. **Nivel 0: Arranque ([main.jsx](file:///c:/Users/Usuario/Documents/MASTER/cuatri%202/multimedia/dsmwebapp/src/main.jsx))**
+   - Inicializa React (`createRoot`).
+   - Envuelve la aplicación en `BrowserRouter` (para manejar las URLs sin recargar la página).
+
+2. **Nivel 1: Layout y Contexto Global ([App.jsx](file:///c:/Users/Usuario/Documents/MASTER/cuatri%202/multimedia/dsmwebapp/src/App.jsx))**
+   - Define la estructura base (`Header` arriba, `Footer` abajo).
+   - Utiliza `AuthProvider` de Context API para que el estado de sesión del usuario viaje automáticamente hacia todas las capas inferiores sin necesidad de pasarlo como "props" a cada hijo manualmente.
+
+3. **Nivel 2: Las Páginas / Vistas (`src/pages/*`)**
+   - Son contenedores "grandes" que actúan dependiendo de la URL activa mediante `<Routes>`.
+   - Por ejemplo, [Catalogo.jsx](file:///c:/Users/Usuario/Documents/MASTER/cuatri%202/multimedia/dsmwebapp/src/pages/Catalogo.jsx) hace peticiones a Firebase (`axios.get`) para descargar los datos de las películas y guarda esto en su estado local (`useState`).
+
+4. **Nivel 3: Componentes Específicos (`src/components/movie/*`)**
+   - Son las piezas pequeñas y reutilizables de UI. 
+   - [Catalogo.jsx](file:///c:/Users/Usuario/Documents/MASTER/cuatri%202/multimedia/dsmwebapp/src/pages/Catalogo.jsx) (Nivel 2) le pasa la información de cada película mediante "props" hacia abajo al componente [Pelicula.jsx](file:///c:/Users/Usuario/Documents/MASTER/cuatri%202/multimedia/dsmwebapp/src/components/movie/Pelicula.jsx) (Nivel 3) para que este último sólo se encargue de dibujarla.
+   - En rutas como `/pelicula/:id` (el `FichaDetalle.jsx`), se reutilizan componentes modulares y atómicos como `Comentarios`, `Puntuacion` y `Añadirfavoritos`.

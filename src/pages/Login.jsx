@@ -3,7 +3,7 @@ import { useState } from "react"
 import { Button, Col, Container, Form, Row, Modal } from "react-bootstrap"
 import { useContext } from "react"
 import { useNavigate } from "react-router"
-import AuthContext from "../components/store/AuthContext"
+import AuthContext from "../context/AuthContext"
 
 
 function Login(props) {

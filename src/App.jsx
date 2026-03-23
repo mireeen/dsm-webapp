@@ -7,10 +7,11 @@ import Legal from './pages/Legal'
 import { Route, Routes } from 'react-router'
 import Login from './pages/Login'
 import Registro from './pages/Registro'
-import { AuthProvider } from './components/store/AuthContext'
-import FichaDetalle from './components/fichadetalle'
+import { AuthProvider } from './context/AuthContext'
+import FichaDetalle from './components/movie/fichadetalle'
 import Favoritos from './pages/Favoritos'
 import ErrorPage from './pages/ErrorPage'
+import Ranking from './pages/Ranking'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path='/Registro' element={<Registro />}></Route>
             <Route path='/pelicula/:id' element={<FichaDetalle />}></Route>
             <Route path='/favoritos' element={<Favoritos />}></Route>
+            <Route path='/Ranking' element={<Ranking />}></Route>
             <Route path='*' element={<ErrorPage />}></Route>
 
           </Routes>
