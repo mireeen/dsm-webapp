@@ -88,7 +88,7 @@ function Comentarios(props) {
                     })}
                 </div>
             ) : (
-                <p className="text-muted mb-4">Aún no hay comentarios para esta película.</p>
+                <p className="mb-4">Aún no hay comentarios para esta película.</p>
             )}
 
             <h5 className="mb-3">Agregar un comentario</h5>

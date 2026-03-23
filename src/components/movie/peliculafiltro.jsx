@@ -31,6 +31,8 @@ function PeliculasFiltro({ genero, setGenero, busqueda, setBusqueda }) {
                         <option value='Ciencia ficción'>Ciencia ficción</option>
                         <option value='Animación'>Animación</option>
                         <option value='Thriller'>Thriller</option>
+                        <option value='Biografía'>Biografía</option>
+                        <option value='Supervivencia'>Supervivencia</option>
                     </Form.Select>
                 </Col>
             </Row>

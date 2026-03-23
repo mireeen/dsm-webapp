@@ -56,7 +56,7 @@ function FichaDetalle() {
                         </Col>
                         <Col md={7} lg={8} className="d-flex flex-column">
                             <h2 className="card-title ficha-detalle-title mb-1">{pelicula.nombre}</h2>
-                            <p className="card-text text-muted mb-4 opacity-75"><strong>Género:</strong> {pelicula.genero}</p>
+                            <p className="card-text ficha-detalle-genero mb-4 opacity-75"><strong>Género:</strong> {pelicula.genero}</p>
 
                             <h5 className="fw-bold border-bottom pb-2">Sinopsis</h5>
                             <p className="card-text ficha-detalle-resumen mb-4" style={{ textAlign: "justify", lineHeight: "1.6" }}>

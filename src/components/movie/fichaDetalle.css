@@ -26,7 +26,8 @@
 
 .ficha-detalle-genero {
     font-size: 1.1rem;
-    color: #666;
+    color: #fff;
+    /*color: #666;*/
     margin-bottom: 20px;
 }
 
