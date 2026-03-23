@@ -15,7 +15,13 @@ function Puntuacion({ peliculaId, soloLectura }) {
 
     useEffect(() => {
         if (!peliculaId) return;
-        axios.get(`https://dsm-catalogo-default-rtdb.europe-west1.firebasedatabase.app/peliculas/${peliculaId}/puntuaciones.json`)
+        axios.get(`https://dsm-catalogo-default-rtdb.europe-west1.firebasedatabase.app/peliculas/${peliculaId}/puntuaciones.json`, {
+            headers: {
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache',
+                'Expires': '0',
+            }
+        })
             .then(response => {
                 const data = response.data;
                 if (data) {
@@ -23,11 +29,12 @@ function Puntuacion({ peliculaId, soloLectura }) {
                     let count = 0;
                     for (let key in data) {
                         const val = data[key]?.puntuacion;
-                        if (typeof val === 'number') {
-                            sum += val;
+                        const numVal = Number(val);
+                        if (!isNaN(numVal) && val !== null && val !== undefined && val !== '') {
+                            sum += numVal;
                             count++;
                             if (local && key === local) {
-                                setUserRating(val);
+                                setUserRating(numVal);
                             }
                         }
                     }

@@ -8,7 +8,13 @@ function Ranking() {
     const [cargando, setCargando] = useState(true);
 
     useEffect(() => {
-        axios.get('https://dsm-catalogo-default-rtdb.europe-west1.firebasedatabase.app/peliculas.json')
+        axios.get('https://dsm-catalogo-default-rtdb.europe-west1.firebasedatabase.app/peliculas.json', {
+            headers: {
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache',
+                'Expires': '0',
+            }
+        })
             .then(response => {
                 let arrayPeliculas = [];
 
@@ -21,8 +27,9 @@ function Ranking() {
                         if (puntuacionesObj) {
                             for (let userKey in puntuacionesObj) {
                                 let val = puntuacionesObj[userKey]?.puntuacion;
-                                if (typeof val === 'number') {
-                                    media += val;
+                                let numVal = Number(val);
+                                if (!isNaN(numVal) && val !== null && val !== undefined && val !== '') {
+                                    media += numVal;
                                     count++;
                                 }
                             }
